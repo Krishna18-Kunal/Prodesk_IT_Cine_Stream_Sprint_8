@@ -22,8 +22,7 @@ function Home() {
   const [totalPages, setTotalPages] = useState(1);
 
   const [loading, setLoading] = useState(true);
-  const [loadingMore, setLoadingMore] =
-    useState(false);
+  const [loadingMore, setLoadingMore] = useState(false);
 
   const [error, setError] = useState("");
 
@@ -44,6 +43,7 @@ function Home() {
         setTotalPages(data.total_pages || 1);
       } catch (err) {
         console.error(err);
+
         setError(
           "Unable to load movies. Please try again."
         );
@@ -88,6 +88,7 @@ function Home() {
       setPage(nextPage);
     } catch (err) {
       console.error(err);
+
       setError(
         "Unable to load more movies."
       );
@@ -127,36 +128,49 @@ function Home() {
 
   return (
     <main>
+
+      {/* HERO SECTION */}
       <section className="hero">
-        <div>
+
+        <div className="hero-content">
+
           <p className="eyebrow">
             DISCOVER • SEARCH • SAVE
           </p>
 
           <h1>
-            Find your next
-            <span> favorite movie.</span>
+            Discover Your Next
+            <span> Favorite Movie</span>
           </h1>
 
           <p className="hero-description">
-            Explore popular movies, search thousands of
-            titles and build your personal watchlist.
+            Explore popular movies, discover new
+            releases and build your personal
+            collection of favorites.
           </p>
+
+          <div className="hero-search">
+            <SearchBar
+              onSearch={handleSearch}
+              disabled={loading}
+            />
+          </div>
+
         </div>
 
-        <div className="hero-search">
-          <SearchBar
-            onSearch={handleSearch}
-            disabled={loading}
-          />
-        </div>
       </section>
 
+      {/* MOVIES SECTION */}
       <section className="content-section">
+
         <div className="section-header">
+
           <div>
+
             <p className="eyebrow">
-              {query ? "SEARCH RESULTS" : "TRENDING NOW"}
+              {query
+                ? "SEARCH RESULTS"
+                : "TRENDING NOW"}
             </p>
 
             <h2>
@@ -164,30 +178,45 @@ function Home() {
                 ? `Results for "${query}"`
                 : "Popular Movies"}
             </h2>
+
+            {query && (
+              <p className="page-description">
+                Movies matching your search
+              </p>
+            )}
+
           </div>
+
         </div>
 
+        {/* ERROR */}
         {error && (
           <div className="error-banner">
             {error}
           </div>
         )}
 
+        {/* LOADING */}
         {loading ? (
           <Loading />
         ) : (
           <>
             <MovieGrid movies={movies} />
 
+            {/* INFINITE SCROLL SENTINEL */}
             <div
               ref={observerRef}
               className="scroll-sentinel"
             />
 
+            {/* LOADING MORE */}
             {loadingMore && (
-              <Loading text="Loading more movies..." />
+              <Loading
+                text="Loading more movies..."
+              />
             )}
 
+            {/* END */}
             {!loadingMore &&
               page >= totalPages &&
               movies.length > 0 && (
@@ -197,7 +226,9 @@ function Home() {
               )}
           </>
         )}
+
       </section>
+
     </main>
   );
 }
