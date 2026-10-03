@@ -1,8 +1,19 @@
-function Loading({ text = "Loading movies..." }) {
+function Loading({
+  text = "Loading movies...",
+}) {
   return (
-    <div className="loading">
-      <div className="spinner" />
+    <div
+      className="loading"
+      role="status"
+      aria-live="polite"
+    >
+
+      <div className="loading-spinner">
+        <div className="spinner" />
+      </div>
+
       <p>{text}</p>
+
     </div>
   );
 }
