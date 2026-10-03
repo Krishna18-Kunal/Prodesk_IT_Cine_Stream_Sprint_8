@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
 
-function SearchBar({ onSearch, disabled = false }) {
+function SearchBar({
+  onSearch,
+  disabled = false,
+}) {
   const [query, setQuery] = useState("");
 
   useEffect(() => {
@@ -22,7 +25,13 @@ function SearchBar({ onSearch, disabled = false }) {
 
   return (
     <div className="search-wrapper">
-      <span className="search-icon">🔎</span>
+
+      <span
+        className="search-icon"
+        aria-hidden="true"
+      >
+        🔎
+      </span>
 
       <input
         type="search"
@@ -31,7 +40,8 @@ function SearchBar({ onSearch, disabled = false }) {
         onChange={(event) =>
           setQuery(event.target.value)
         }
-        placeholder="Search movies..."
+        placeholder="Search for movies..."
+        aria-label="Search movies"
       />
 
       {query && (
@@ -39,10 +49,12 @@ function SearchBar({ onSearch, disabled = false }) {
           type="button"
           className="clear-search"
           onClick={() => setQuery("")}
+          aria-label="Clear search"
         >
           ×
         </button>
       )}
+
     </div>
   );
 }
