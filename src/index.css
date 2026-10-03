@@ -87,7 +87,7 @@ a {
 
   border-radius: 999px;
 
-  background: #e50914;
+  background: #e58d09;
 
   color: white;
 
@@ -123,7 +123,7 @@ a {
 .eyebrow {
   margin-bottom: 12px;
 
-  color: #e50914;
+  color: #e58d09;
 
   font-size: 12px;
   font-weight: 800;
@@ -141,7 +141,7 @@ a {
 
 .hero h1 span {
   display: block;
-  color: #e50914;
+  color: #e58d09;
 }
 
 .hero-description {
@@ -187,7 +187,7 @@ a {
 }
 
 .search-wrapper input:focus {
-  border-color: #e50914;
+  border-color: #e58d09;
 }
 
 .search-icon {
@@ -337,7 +337,7 @@ a {
 }
 
 .favorite-button.active {
-  background: #e50914;
+  background: #e58d09;
 }
 
 .movie-info {
@@ -389,7 +389,7 @@ a {
 
   border: 3px solid #333;
 
-  border-top-color: #e50914;
+  border-top-color: #e58d09;
 
   border-radius: 50%;
 
@@ -477,7 +477,7 @@ a {
 
   border-radius: 8px;
 
-  background: #e50914;
+  background: #e58d09;
 
   color: white;
 
