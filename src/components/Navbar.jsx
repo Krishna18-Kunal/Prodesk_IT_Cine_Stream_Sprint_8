@@ -7,7 +7,7 @@ function Navbar() {
   return (
     <nav className="navbar">
       <Link to="/" className="logo">
-        🎬 Cine-Stream
+         Cine-Stream
       </Link>
 
       <div className="nav-links">
