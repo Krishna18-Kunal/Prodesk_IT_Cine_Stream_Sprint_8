@@ -19,9 +19,16 @@ function MovieCard({ movie }) {
     ? movie.release_date.substring(0, 4)
     : "N/A";
 
+  const rating =
+    typeof movie.vote_average === "number"
+      ? movie.vote_average.toFixed(1)
+      : "N/A";
+
   return (
     <article className="movie-card">
+
       <div className="poster-container">
+
         {posterUrl ? (
           <img
             src={posterUrl}
@@ -30,9 +37,12 @@ function MovieCard({ movie }) {
           />
         ) : (
           <div className="poster-placeholder">
-            No Poster
+            <span>🎬</span>
+            <p>No Poster Available</p>
           </div>
         )}
+
+        <div className="poster-overlay" />
 
         <button
           type="button"
@@ -45,22 +55,49 @@ function MovieCard({ movie }) {
               ? "Remove from favorites"
               : "Add to favorites"
           }
+          title={
+            favorite
+              ? "Remove from favorites"
+              : "Add to favorites"
+          }
         >
           {favorite ? "♥" : "♡"}
         </button>
+
+        <div className="movie-overlay-info">
+
+          <div className="overlay-rating">
+            ⭐ {rating}
+          </div>
+
+          <span className="overlay-year">
+            {releaseYear}
+          </span>
+
+        </div>
+
       </div>
 
       <div className="movie-info">
-        <h3>{movie.title}</h3>
+
+        <h3 title={movie.title}>
+          {movie.title}
+        </h3>
 
         <div className="movie-meta">
-          <span>{releaseYear}</span>
 
           <span>
-            ⭐ {movie.vote_average?.toFixed(1) || "N/A"}
+            {releaseYear}
           </span>
+
+          <span className="movie-rating">
+            ⭐ {rating}
+          </span>
+
         </div>
+
       </div>
+
     </article>
   );
 }
